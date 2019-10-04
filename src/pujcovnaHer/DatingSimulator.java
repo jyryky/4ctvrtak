@@ -1,4 +1,4 @@
 package pujcovnaHer;
 
-public class DatingSimulator {
+public class DatingSimulator extends AbsPolozka {
 }
