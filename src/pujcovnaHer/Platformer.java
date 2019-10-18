@@ -1,4 +1,4 @@
 package pujcovnaHer;
 
-public class Platformer {
+public class Platformer extends AbsPolozka {
 }

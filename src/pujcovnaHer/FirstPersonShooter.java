@@ -1,4 +1,4 @@
 package pujcovnaHer;
 
-public class FirstPersonShooter {
+public class FirstPersonShooter extends AbsPolozka {
 }
