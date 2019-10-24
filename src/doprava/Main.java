@@ -1,4 +1,4 @@
-package pujcovnaHer;
+package doprava;
 
 public class Main {
 
