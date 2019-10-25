@@ -1,4 +1,4 @@
-package doprava;
+package GUI;
 
 public class Main {
 
