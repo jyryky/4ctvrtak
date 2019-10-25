@@ -1,5 +1,8 @@
 package doprava;
 
+/**
+ * implementuj do AbsClassy IStatusVozidla
+ */
 public abstract class AbsProstredek implements IOpustitDostavit, IPalivo, IRidit {
     protected String jmenoProstredku;
     protected int maxMist;

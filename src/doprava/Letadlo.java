@@ -93,4 +93,8 @@ public class Letadlo extends AbsProstredek {
     public void akcelerujDolu() {
 
     }
+
+    /**
+     * Sem dej tela tech funkci z IStatusVozidla
+     */
 }
