@@ -44,7 +44,7 @@ public class Letadlo extends AbsProstredek {
     }
 
     public void vstoupit(int pocetLidi) {
-        if (this.maxMist <= this.soucasneMist + pocetLidi) {
+        if(this.maxMist <= this.soucasneMist + pocetLidi) {
             System.out.println(pocetLidi + " vstoupilo do " + this.jmenoProstredku + ".");
             if(souradniceZ!=0 && rychlostX!=0 && rychlostY!=0 && rychlostZ!=0){
                 System.out.println("Nikdo ale vlaste nenastoupil.");
@@ -61,37 +61,77 @@ public class Letadlo extends AbsProstredek {
 
     @Override
     public void doplnitPalivo() {
-
+        this.soucasnePalivo=this.maxPalivo;
+        System.out.println("Palivo prostredku "+this.jmenoProstredku+" bylo doplneno.");
     }
 
     @Override
-    public void akcelerujDopredu() {
-
+    public void pohniSe(){
+        this.souradniceX+=this.rychlostX;
+        this.souradniceY+=this.rychlostY;
+        if(souradniceZ>=0){this.souradniceZ+=this.rychlostZ;}
+        else{System.out.println("Letadlo je pod zemi!!");
+            this.souradniceZ=0;
+            this.souradniceX=0;
+            this.souradniceY=0;
+            this.rychlostX=0;
+            this.rychlostY=0;
+            this.rychlostZ=0;
+        }
     }
 
     @Override
-    public void akcelerujDozadu() {
-
+    public void akcelerujDopredu(float oKolik) {
+        if(oKolik<0){akcelerujDozadu(0-oKolik);}
+        else{
+            this.rychlostY+=oKolik;
+            pohniSe();
+        }
     }
 
     @Override
-    public void akcelerujDoleva() {
-
+    public void akcelerujDozadu(float oKolik) {
+        if(oKolik<0){akcelerujDopredu(0-oKolik);}
+        else{
+            this.rychlostY-=oKolik;
+            pohniSe();
+        }
     }
 
     @Override
-    public void akcelerujDoprava() {
-
+    public void akcelerujDoleva(float oKolik) {
+        if(oKolik<0){akcelerujDoprava(0-oKolik);}
+        else {
+            this.rychlostX -= oKolik;
+            pohniSe();
+        }
     }
 
     @Override
-    public void akcelerujNahoru() {
-
+    public void akcelerujDoprava(float oKolik) {
+        if(oKolik<0){akcelerujDoleva(0-oKolik);}
+        else{
+            this.rychlostX+=oKolik;
+            pohniSe();
+        }
     }
 
     @Override
-    public void akcelerujDolu() {
+    public void akcelerujNahoru(float oKolik) {
+        if(oKolik<0){akcelerujDolu(0-oKolik);}
+        else{
+            this.rychlostZ+=oKolik;
+            pohniSe();
+        }
+    }
 
+    @Override
+    public void akcelerujDolu(float oKolik) {
+        if(oKolik<0){akcelerujNahoru(0-oKolik);}
+        else{
+            this.rychlostZ-=oKolik;
+            pohniSe();
+        }
     }
 
     /**
