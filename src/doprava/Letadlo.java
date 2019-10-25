@@ -133,8 +133,10 @@ public class Letadlo extends AbsProstredek {
             pohniSe();
         }
     }
+    @Override
+    public void vypisStatus() {
 
-    /**
-     * Sem dej tela tech funkci z IStatusVozidla
-     */
+        System.out.println(this.souradniceX,this.souradniceY,this.souradniceZ,this.rychlostX,this.rychlostY,this.rychlostZ);
+    }
+
 }
