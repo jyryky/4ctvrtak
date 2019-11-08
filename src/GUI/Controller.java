@@ -111,25 +111,4 @@ public class Controller {
         LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
     }
 
-
-
-    @FXML
-    public Label AutoRychlostZ;
-    @FXML
-    public Label PonorkaRychlostX;
-    @FXML
-    private Button AutoFW;
-    @FXML
-    private Button AutoUP;
-    @FXML
-    private Label AutoPoziceX;
-    @FXML
-    private Label AutoPoziceY;
-    @FXML
-    private Label AutoPoziceZ;
-    @FXML
-    private void AutoFW(ActionEvent event){
-        AutoRychlostZ.setText(String.valueOf(letadlo.vypisStatus()[0]));
-    }
-
 }
