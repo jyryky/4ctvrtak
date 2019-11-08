@@ -1,14 +1,12 @@
 package doprava;
 
+public class Ponorka extends AbsProstredek {
+    private int pocetPonornychKomor;
 
-public class Letadlo extends AbsProstredek {
-    private int pocetMotoru;
-
-    public Letadlo(String jmenoProstredku, float maxPalivo, int pocetMotoru, int maxMist, float palivoZaJednotku) {
+    public Ponorka(String jmenoProstredku, float maxPalivo, int maxMist, float palivoZaJednotku, int pocetPonornychKomor) {
         super(jmenoProstredku, maxPalivo, maxMist, palivoZaJednotku);
-        this.pocetMotoru = pocetMotoru;
+        this.pocetPonornychKomor = pocetPonornychKomor;
     }
-
 
     @Override
     public void opustit() {
@@ -18,7 +16,6 @@ public class Letadlo extends AbsProstredek {
             System.out.println("Vsichni zemreli.");
         }
     }
-
     public void opustit(int pocetLidi){
         if(0<=this.soucasneMist-pocetLidi){
             this.soucasneMist=this.soucasneMist-pocetLidi;
@@ -71,11 +68,9 @@ public class Letadlo extends AbsProstredek {
     public void pohniSe(){
         this.souradniceX+=this.rychlostX;
         this.souradniceY+=this.rychlostY;
-        if(souradniceZ>=0){this.souradniceZ+=this.rychlostZ;}
-        else{System.out.println("Letadlo je pod zemi!!");
+        if(souradniceZ<=0){this.souradniceZ+=this.rychlostZ;}
+        else{System.out.println("Ponorka je nad vodou!!");
             this.souradniceZ=0;
-            this.rychlostX=0;
-            this.rychlostY=0;
             this.rychlostZ=0;
         }
     }
@@ -136,8 +131,6 @@ public class Letadlo extends AbsProstredek {
 
     @Override
     public float[] vypisStatus() {
-        float[] returnable = {this.souradniceX,this.souradniceY,this.souradniceZ,this.rychlostX,this.rychlostY,this.rychlostZ};
-        return returnable;
+        return new float[]{this.souradniceX,this.souradniceY,this.souradniceZ,this.rychlostX,this.rychlostY,this.rychlostZ};
     }
-
 }

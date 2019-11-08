@@ -1,9 +1,10 @@
 package doprava;
 
 /**
- * implementuj do AbsClassy IStatusVozidla
+ * implementuj do AbsClassy IStatusVozidla /Havelka
+ * rekl jsem, aby jsi implementoval IStatusVozidla :] /Havelka
  */
-public abstract class AbsProstredek implements IOpustitDostavit, IPalivo, IRidit {
+public abstract class AbsProstredek implements IOpustitDostavit, IPalivo, IRidit, IStatusVozidla {
     protected String jmenoProstredku;
     protected int maxMist;
     protected int soucasneMist;
