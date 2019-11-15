@@ -1,9 +1,7 @@
 package GUI;
 
 
-import doprava.AbsProstredek;
-import doprava.Letadlo;
-import doprava.Vyrobna;
+import doprava.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,7 +35,7 @@ public class Controller {
     public Label LetadloPoziceY;
     @FXML
     public Label LetadloPoziceX;
-    AbsProstredek letadlo = new Letadlo("Letadloslav", 40.0f, 6, 60, 0.5f);
+
     @FXML
     private void LetadloRight(){
         letadlo.akcelerujDoprava(1.0f);
