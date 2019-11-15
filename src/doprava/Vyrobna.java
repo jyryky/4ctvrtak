@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class Vyrobna {
     private ArrayList<AbsProstredek> prostredky = new ArrayList<>();
-    private int i;
 
     public void vytvorProstredek(String typ, String jmenoProstredku, float maxPalivo, int maxMist, int pocetPohonu ){
         if (Objects.equals(typ, "Auto")){
@@ -18,7 +17,7 @@ public class Vyrobna {
     }
 
     public void znicProstredek(String jmenoProstredku){
-        i=0;
+        int i = 0;
         for (AbsProstredek prostredek: prostredky
              ) {
             if(Objects.equals(prostredek.jmenoProstredku, jmenoProstredku)){

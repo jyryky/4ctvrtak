@@ -1,19 +1,19 @@
 package doprava;
 
 public abstract class AbsProstredek implements IOpustitVstoupit, IPalivo, IRidit, IStatusVozidla {
-    protected String jmenoProstredku;
-    protected int maxMist;
-    protected int soucasneMist;
-    protected float maxPalivo;
-    protected float soucasnePalivo;
-    protected float souradniceX;
-    protected float souradniceY;
-    protected float souradniceZ;
-    protected float rychlostX;
-    protected float rychlostY;
-    protected float rychlostZ;
+    String jmenoProstredku;
+    int maxMist;
+    int soucasneMist;
+    float maxPalivo;
+    float soucasnePalivo;
+    float souradniceX;
+    float souradniceY;
+    float souradniceZ;
+    float rychlostX;
+    float rychlostY;
+    float rychlostZ;
 
-    public AbsProstredek(String jmenoProstredku, float maxPalivo, int maxMist) {
+    AbsProstredek(String jmenoProstredku, float maxPalivo, int maxMist) {
         this.jmenoProstredku = jmenoProstredku;
         this.maxPalivo = maxPalivo;
         this.maxMist = maxMist;

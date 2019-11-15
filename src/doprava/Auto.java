@@ -3,7 +3,7 @@ package doprava;
 public class Auto extends AbsProstredek {
     private int pocetValcu;
 
-    public Auto(String jmenoProstredku, float maxPalivo, int maxMist, int pocetValcu) {
+    Auto(String jmenoProstredku, float maxPalivo, int maxMist, int pocetValcu) {
         super(jmenoProstredku, maxPalivo, maxMist);
         this.pocetValcu = pocetValcu;
     }
@@ -78,8 +78,7 @@ public class Auto extends AbsProstredek {
 
     @Override
     public float[] vypisStatus() {
-        float[] returnable = {this.souradniceX,this.souradniceY,this.souradniceZ,this.rychlostX,this.rychlostY,this.rychlostZ};
-        return returnable;
+        return new float[]{this.souradniceX,this.souradniceY,this.souradniceZ,this.rychlostX,this.rychlostY,this.rychlostZ};
     }
 
     @Override
