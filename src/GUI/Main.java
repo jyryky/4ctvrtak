@@ -23,7 +23,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) { launch(args); }{
+    public static void main(String[] args) { launch(args);
         String fileName="Prostredky1.txt";
         ArrayList<AbsProstredek> em = new ArrayList<>();
         ArrayList<AbsProstredek> emNew = new ArrayList<>();
@@ -35,6 +35,7 @@ public class Main extends Application {
             SerializationUtil.serialize(em, fileName);
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
 
         //deserialize from file
