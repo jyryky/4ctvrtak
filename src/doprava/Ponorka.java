@@ -3,7 +3,7 @@ package doprava;
 public class Ponorka extends AbsProstredek {
     private int pocetPonornychKomor;
 
-    Ponorka(String jmenoProstredku, float maxPalivo, int maxMist, int pocetPonornychKomor) {
+    public Ponorka(String jmenoProstredku, float maxPalivo, int maxMist, int pocetPonornychKomor) {
         super(jmenoProstredku, maxPalivo, maxMist);
         this.pocetPonornychKomor = pocetPonornychKomor;
     }

@@ -3,7 +3,7 @@ package doprava;
 public class Auto extends AbsProstredek {
     private int pocetValcu;
 
-    Auto(String jmenoProstredku, float maxPalivo, int maxMist, int pocetValcu) {
+    public Auto(String jmenoProstredku, float maxPalivo, int maxMist, int pocetValcu) {
         super(jmenoProstredku, maxPalivo, maxMist);
         this.pocetValcu = pocetValcu;
     }
