@@ -1,16 +1,11 @@
 package doprava;
 
-/**
- * implementuj do AbsClassy IStatusVozidla /Havelka
- * rekl jsem, aby jsi implementoval IStatusVozidla :] /Havelka
- */
-public abstract class AbsProstredek implements IOpustitDostavit, IPalivo, IRidit, IStatusVozidla {
+public abstract class AbsProstredek implements IOpustitVstoupit, IPalivo, IRidit, IStatusVozidla {
     protected String jmenoProstredku;
     protected int maxMist;
     protected int soucasneMist;
     protected float maxPalivo;
     protected float soucasnePalivo;
-    protected float palivoZaJednotku;
     protected float souradniceX;
     protected float souradniceY;
     protected float souradniceZ;
@@ -18,11 +13,10 @@ public abstract class AbsProstredek implements IOpustitDostavit, IPalivo, IRidit
     protected float rychlostY;
     protected float rychlostZ;
 
-    public AbsProstredek(String jmenoProstredku, float maxPalivo, int maxMist, float palivoZaJednotku) {
+    public AbsProstredek(String jmenoProstredku, float maxPalivo, int maxMist) {
         this.jmenoProstredku = jmenoProstredku;
         this.maxPalivo = maxPalivo;
         this.maxMist = maxMist;
-        this.palivoZaJednotku = palivoZaJednotku;
         this.soucasnePalivo = 0;
         this.soucasneMist = 0;
         this.souradniceX = 0;

@@ -1,6 +1,6 @@
 package doprava;
 
-public interface IOpustitDostavit {
+public interface IOpustitVstoupit {
     void opustit();
     void vstoupit();
 }

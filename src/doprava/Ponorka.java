@@ -3,8 +3,8 @@ package doprava;
 public class Ponorka extends AbsProstredek {
     private int pocetPonornychKomor;
 
-    public Ponorka(String jmenoProstredku, float maxPalivo, int maxMist, float palivoZaJednotku, int pocetPonornychKomor) {
-        super(jmenoProstredku, maxPalivo, maxMist, palivoZaJednotku);
+    public Ponorka(String jmenoProstredku, float maxPalivo, int maxMist, int pocetPonornychKomor) {
+        super(jmenoProstredku, maxPalivo, maxMist);
         this.pocetPonornychKomor = pocetPonornychKomor;
     }
 
@@ -65,72 +65,30 @@ public class Ponorka extends AbsProstredek {
     }
 
     @Override
-    public void pohniSe(){
-        this.souradniceX+=this.rychlostX;
-        this.souradniceY+=this.rychlostY;
-        if(souradniceZ<=0){this.souradniceZ+=this.rychlostZ;}
-        else{System.out.println("Ponorka je nad vodou!!");
-            this.souradniceZ=0;
-            this.rychlostZ=0;
+    public void zrychli(float x, float y, float z) {
+        if (this.soucasnePalivo - ((x + y + z)) * this.pocetPonornychKomor >= 0) {
+            this.souradniceX += this.rychlostX += x * this.pocetPonornychKomor;
+            this.souradniceY += this.rychlostY += y * this.pocetPonornychKomor;
+            if (souradniceZ <= 0) {
+                this.souradniceZ += this.rychlostZ += z * this.pocetPonornychKomor;
+            } else {
+                System.out.println("Ponorka je nad vodou!!");
+                this.souradniceZ = 0;
+                this.rychlostZ = 0;
+            }
         }
-    }
-
-    @Override
-    public void akcelerujDopredu(float oKolik) {
-        if(oKolik<0){akcelerujDozadu(0-oKolik);}
         else{
-            this.rychlostY+=oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujDozadu(float oKolik) {
-        if(oKolik<0){akcelerujDopredu(0-oKolik);}
-        else{
-            this.rychlostY-=oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujDoleva(float oKolik) {
-        if(oKolik<0){akcelerujDoprava(0-oKolik);}
-        else {
-            this.rychlostX -= oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujDoprava(float oKolik) {
-        if(oKolik<0){akcelerujDoleva(0-oKolik);}
-        else{
-            this.rychlostX+=oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujNahoru(float oKolik) {
-        if(oKolik<0){akcelerujDolu(0-oKolik);}
-        else{
-            this.rychlostZ+=oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujDolu(float oKolik) {
-        if(oKolik<0){akcelerujNahoru(0-oKolik);}
-        else{
-            this.rychlostZ-=oKolik;
-            pohniSe();
+            System.out.println("Neni palivo.");
         }
     }
 
     @Override
     public float[] vypisStatus() {
         return new float[]{this.souradniceX,this.souradniceY,this.souradniceZ,this.rychlostX,this.rychlostY,this.rychlostZ};
+    }
+
+    @Override
+    public float vypisPalivo() {
+        return this.soucasnePalivo;
     }
 }

@@ -3,8 +3,8 @@ package doprava;
 public class Auto extends AbsProstredek {
     private int pocetValcu;
 
-    public Auto(String jmenoProstredku, float maxPalivo, int maxMist, float palivoZaJednotku, int pocetValcu) {
-        super(jmenoProstredku, maxPalivo, maxMist, palivoZaJednotku);
+    public Auto(String jmenoProstredku, float maxPalivo, int maxMist, int pocetValcu) {
+        super(jmenoProstredku, maxPalivo, maxMist);
         this.pocetValcu = pocetValcu;
     }
 
@@ -65,60 +65,25 @@ public class Auto extends AbsProstredek {
     }
 
     @Override
-    public void akcelerujDopredu(float oKolik) {
-        if(oKolik<0){akcelerujDozadu(0-oKolik);}
+    public void zrychli(float x, float y, float z) {
+        if(this.soucasnePalivo-((x+y+z))*this.pocetValcu>=0){
+            this.souradniceX+=this.rychlostX+=x*this.pocetValcu;
+            this.souradniceY+=this.rychlostY+=y*this.pocetValcu;
+            if(z!=0){System.out.println("Upřímně. Co jsi čekal? Toto je auto. Auto neumí létat. Auto nedokáže jet pod zem. Jsme na rovné ploše. Už jen to, že jsi se pokusil o to, aby auto vzlétlo či vjelo pod zem je absolutně nepochopitelné. Zamysli se nad tím, co děláš.");}
+        }
         else{
-            this.rychlostY+=oKolik;
-            pohniSe();
+            System.out.println("Neni palivo.");
         }
-    }
-
-    @Override
-    public void akcelerujDozadu(float oKolik) {
-        if(oKolik<0){akcelerujDopredu(0-oKolik);}
-        else{
-            this.rychlostY-=oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujDoleva(float oKolik) {
-        if(oKolik<0){akcelerujDoprava(0-oKolik);}
-        else {
-            this.rychlostX -= oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujDoprava(float oKolik) {
-        if(oKolik<0){akcelerujDoleva(0-oKolik);}
-        else{
-            this.rychlostX+=oKolik;
-            pohniSe();
-        }
-    }
-
-    @Override
-    public void akcelerujNahoru(float oKolik) {
-        System.out.println("Jak?");
-    }
-
-    @Override
-    public void akcelerujDolu(float oKolik) {
-        System.out.println("Jak?");
-    }
-
-    @Override
-    public void pohniSe() {
-        this.souradniceX+=this.rychlostX;
-        this.souradniceY+=this.rychlostY;
     }
 
     @Override
     public float[] vypisStatus() {
         float[] returnable = {this.souradniceX,this.souradniceY,this.souradniceZ,this.rychlostX,this.rychlostY,this.rychlostZ};
         return returnable;
+    }
+
+    @Override
+    public float vypisPalivo() {
+        return this.soucasnePalivo;
     }
 }
