@@ -10,7 +10,6 @@ public abstract class AbsProstredek implements IOpustitDostavit, IPalivo, IRidit
     protected int soucasneMist;
     protected float maxPalivo;
     protected float soucasnePalivo;
-    protected float palivoZaJednotku;
     protected float souradniceX;
     protected float souradniceY;
     protected float souradniceZ;
@@ -22,7 +21,6 @@ public abstract class AbsProstredek implements IOpustitDostavit, IPalivo, IRidit
         this.jmenoProstredku = jmenoProstredku;
         this.maxPalivo = maxPalivo;
         this.maxMist = maxMist;
-        this.palivoZaJednotku = palivoZaJednotku;
         this.soucasnePalivo = 0;
         this.soucasneMist = 0;
         this.souradniceX = 0;
