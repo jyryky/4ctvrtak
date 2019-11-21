@@ -12,8 +12,9 @@ public class Vyrobna {
                 prostredky.add(new Auto(jmenoProstredku, maxPalivo, maxMist, pocetPohonu));
             } else if (Objects.equals(typ, "Letadlo")) {
                 prostredky.add(new Letadlo(jmenoProstredku, maxPalivo, maxMist, pocetPohonu));
-            }
+            } else {
             prostredky.add(new Ponorka(jmenoProstredku, maxPalivo, maxMist, pocetPohonu));
+            }
         }
     }
 
@@ -40,5 +41,4 @@ public class Vyrobna {
     public ArrayList<AbsProstredek> getProstredky() {
         return prostredky;
     }
-    public void setProstredky(AbsProstredek prostredek){prostredky.add(prostredek);}
 }

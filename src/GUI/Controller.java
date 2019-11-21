@@ -44,7 +44,7 @@ public class Controller {
     public ChoiceBox<String> LetadloChoiceBox;
 
     public void updateChoiceBox(){
-        LetadloChoiceBox.getItems().removeAll();
+        LetadloChoiceBox.getItems().clear();
         for (AbsProstredek prostredek:vyrobna.getProstredky()
              ) {
             if(prostredek instanceof Letadlo){
@@ -58,7 +58,7 @@ public class Controller {
         for (AbsProstredek prostredek:vyrobna.getProstredky()){
             if(Objects.equals(prostredek.getNazevProstredku(), value)){
                 prostredek.zrychli(0,0,1);
-                updateLabels((Letadlo)prostredek);
+                updateLabels(prostredek);
                 break;
             }
         }
@@ -68,7 +68,7 @@ public class Controller {
         for (AbsProstredek prostredek:vyrobna.getProstredky()){
             if(Objects.equals(prostredek.getNazevProstredku(), value)){
                 prostredek.zrychli(0,0,-1);
-                updateLabels((Letadlo)prostredek);
+                updateLabels(prostredek);
                 break;
             }
         }
@@ -78,7 +78,7 @@ public class Controller {
         for (AbsProstredek prostredek:vyrobna.getProstredky()){
             if(Objects.equals(prostredek.getNazevProstredku(), value)){
                 prostredek.zrychli(0,1,0);
-                updateLabels((Letadlo)prostredek);
+                updateLabels(prostredek);
                 break;
             }
         }
@@ -88,7 +88,7 @@ public class Controller {
         for (AbsProstredek prostredek:vyrobna.getProstredky()){
             if(Objects.equals(prostredek.getNazevProstredku(), value)){
                 prostredek.zrychli(0,-1,0);
-                updateLabels((Letadlo)prostredek);
+                updateLabels(prostredek);
                 break;
             }
         }
@@ -98,7 +98,7 @@ public class Controller {
         for (AbsProstredek prostredek:vyrobna.getProstredky()){
             if(Objects.equals(prostredek.getNazevProstredku(), value)){
                 prostredek.zrychli(1,0,0);
-                updateLabels((Letadlo)prostredek);
+                updateLabels(prostredek);
                 break;
             }
         }
@@ -108,12 +108,13 @@ public class Controller {
         for (AbsProstredek prostredek:vyrobna.getProstredky()){
             if(Objects.equals(prostredek.getNazevProstredku(), value)){
                 prostredek.zrychli(-1,0,0);
-                updateLabels((Letadlo)prostredek);
+                updateLabels(prostredek);
                 break;
             }
         }
     }
-    private void updateLabels(Letadlo letadlo){
+
+    private void updateLabels(AbsProstredek letadlo){
         float[] hodnoty=letadlo.vypisStatus();
         LetadloPoziceX.setText(Float.toString(hodnoty[0]));
         LetadloPoziceY.setText(Float.toString(hodnoty[1]));

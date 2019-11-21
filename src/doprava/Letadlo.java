@@ -68,20 +68,15 @@ public class Letadlo extends AbsProstredek {
 
     @Override
     public void zrychli(float x, float y, float z){
-        if(this.soucasnePalivo-((x+y+z))*this.pocetMotoru>=0){
-            this.souradniceX+=this.rychlostX+=x*this.pocetMotoru;
-            this.souradniceY+=this.rychlostY+=y*this.pocetMotoru;
-            if(souradniceZ>=0){this.souradniceZ+=this.rychlostZ+=z*this.pocetMotoru;}
-            else {
-                System.out.println("Letadlo je pod zemi!!");
-                this.souradniceZ = 0;
-                this.rychlostX = 0;
-                this.rychlostY = 0;
-                this.rychlostZ = 0;
-            }
-        }
-        else{
-            System.out.println("Neni palivo.");
+        this.souradniceX+=this.rychlostX+=x*this.pocetMotoru;
+        this.souradniceY+=this.rychlostY+=y*this.pocetMotoru;
+        if(souradniceZ>=0){this.souradniceZ+=this.rychlostZ+=z*this.pocetMotoru;}
+        else {
+            System.out.println("Letadlo je pod zemi!!");
+            this.souradniceZ = 0;
+            this.rychlostX = 0;
+            this.rychlostY = 0;
+            this.rychlostZ = 0;
         }
     }
 
