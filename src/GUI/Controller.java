@@ -1,16 +1,21 @@
 package GUI;
 
 
-import doprava.*;
-import javafx.event.ActionEvent;
+import doprava.AbsProstredek;
+import doprava.Letadlo;
+import doprava.Vyrobna;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Controller {
+    private Vyrobna vyrobna = new Vyrobna();
     @FXML
     public Label LetadloRychlostX;
     @FXML
@@ -35,78 +40,87 @@ public class Controller {
     public Label LetadloPoziceY;
     @FXML
     public Label LetadloPoziceX;
+    @FXML
+    public ChoiceBox<String> LetadloChoiceBox;
 
-    @FXML
-    private void LetadloRight(){
-        letadlo.akcelerujDoprava(1.0f);
-        letadlo.akcelerujNahoru(0.0f);
-        letadlo.akcelerujDozadu(0.0f);
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
-        LetadloRychlostY.setText(String.valueOf(letadlo.vypisStatus()[1]));
-        LetadloPoziceY.setText(String.valueOf(letadlo.vypisStatus()[4]));
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
+    public void updateChoiceBox(){
+        LetadloChoiceBox.getItems().removeAll();
+        for (AbsProstredek prostredek:vyrobna.getProstredky()
+             ) {
+            if(prostredek instanceof Letadlo){
+                LetadloChoiceBox.getItems().add(prostredek.getNazevProstredku());
+            }
+        }
     }
-    @FXML
-    private void LetadloLeft(){
-        letadlo.akcelerujDoleva(1.0f);
-        letadlo.akcelerujNahoru(0.0f);
-        letadlo.akcelerujDozadu(0.0f);
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
-        LetadloRychlostY.setText(String.valueOf(letadlo.vypisStatus()[1]));
-        LetadloPoziceY.setText(String.valueOf(letadlo.vypisStatus()[4]));
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
+
+    public void LetadloUP(){
+        String value = LetadloChoiceBox.getValue();
+        for (AbsProstredek prostredek:vyrobna.getProstredky()){
+            if(Objects.equals(prostredek.getNazevProstredku(), value)){
+                prostredek.zrychli(0,0,1);
+                updateLabels((Letadlo)prostredek);
+                break;
+            }
+        }
     }
-    @FXML
-    private void LetadloUP(){
-        letadlo.akcelerujNahoru(1.0f);
-        letadlo.akcelerujDozadu(0.0f);
-        letadlo.akcelerujDoleva(0.0f);
-        LetadloRychlostZ.setText(String.valueOf(letadlo.vypisStatus()[2]));
-        LetadloPoziceZ.setText(String.valueOf(letadlo.vypisStatus()[5]));
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
-        LetadloRychlostY.setText(String.valueOf(letadlo.vypisStatus()[1]));
-        LetadloPoziceY.setText(String.valueOf(letadlo.vypisStatus()[4]));
+    public void LetadloDown(){
+        String value = LetadloChoiceBox.getValue();
+        for (AbsProstredek prostredek:vyrobna.getProstredky()){
+            if(Objects.equals(prostredek.getNazevProstredku(), value)){
+                prostredek.zrychli(0,0,-1);
+                updateLabels((Letadlo)prostredek);
+                break;
+            }
+        }
     }
-    @FXML
-    private void LetadloDown(){
-        letadlo.akcelerujDolu(1.0f);
-        letadlo.akcelerujDozadu(0.0f);
-        letadlo.akcelerujDoleva(0.0f);
-        LetadloRychlostZ.setText(String.valueOf(letadlo.vypisStatus()[2]));
-        LetadloPoziceZ.setText(String.valueOf(letadlo.vypisStatus()[5]));
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
-        LetadloRychlostY.setText(String.valueOf(letadlo.vypisStatus()[1]));
-        LetadloPoziceY.setText(String.valueOf(letadlo.vypisStatus()[4]));
+    public void LetadloLeft(){
+        String value = LetadloChoiceBox.getValue();
+        for (AbsProstredek prostredek:vyrobna.getProstredky()){
+            if(Objects.equals(prostredek.getNazevProstredku(), value)){
+                prostredek.zrychli(0,1,0);
+                updateLabels((Letadlo)prostredek);
+                break;
+            }
+        }
     }
-    @FXML
-    private void LetadloFW(){
-        letadlo.akcelerujDopredu(1.0f);
-        letadlo.akcelerujNahoru(0.0f);
-        letadlo.akcelerujDoleva(0.0f);
-        LetadloRychlostY.setText(String.valueOf(letadlo.vypisStatus()[1]));
-        LetadloPoziceY.setText(String.valueOf(letadlo.vypisStatus()[4]));
-        LetadloRychlostZ.setText(String.valueOf(letadlo.vypisStatus()[2]));
-        LetadloPoziceZ.setText(String.valueOf(letadlo.vypisStatus()[5]));
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
+    public void LetadloRight(){
+        String value = LetadloChoiceBox.getValue();
+        for (AbsProstredek prostredek:vyrobna.getProstredky()){
+            if(Objects.equals(prostredek.getNazevProstredku(), value)){
+                prostredek.zrychli(0,-1,0);
+                updateLabels((Letadlo)prostredek);
+                break;
+            }
+        }
     }
-    @FXML
-    private void LetadloBW(){
-        letadlo.akcelerujDozadu(1.0f);
-        letadlo.akcelerujNahoru(0.0f);
-        letadlo.akcelerujDoleva(0.0f);
-        LetadloRychlostY.setText(String.valueOf(letadlo.vypisStatus()[1]));
-        LetadloPoziceY.setText(String.valueOf(letadlo.vypisStatus()[4]));
-        LetadloRychlostZ.setText(String.valueOf(letadlo.vypisStatus()[2]));
-        LetadloPoziceZ.setText(String.valueOf(letadlo.vypisStatus()[5]));
-        LetadloRychlostX.setText(String.valueOf(letadlo.vypisStatus()[0]));
-        LetadloPoziceX.setText(String.valueOf(letadlo.vypisStatus()[3]));
+    public void LetadloFW(){
+        String value = LetadloChoiceBox.getValue();
+        for (AbsProstredek prostredek:vyrobna.getProstredky()){
+            if(Objects.equals(prostredek.getNazevProstredku(), value)){
+                prostredek.zrychli(1,0,0);
+                updateLabels((Letadlo)prostredek);
+                break;
+            }
+        }
+    }
+    public void LetadloBW(){
+        String value = LetadloChoiceBox.getValue();
+        for (AbsProstredek prostredek:vyrobna.getProstredky()){
+            if(Objects.equals(prostredek.getNazevProstredku(), value)){
+                prostredek.zrychli(-1,0,0);
+                updateLabels((Letadlo)prostredek);
+                break;
+            }
+        }
+    }
+    private void updateLabels(Letadlo letadlo){
+        float[] hodnoty=letadlo.vypisStatus();
+        LetadloPoziceX.setText(Float.toString(hodnoty[0]));
+        LetadloPoziceY.setText(Float.toString(hodnoty[1]));
+        LetadloPoziceZ.setText(Float.toString(hodnoty[2]));
+        LetadloRychlostX.setText(Float.toString(hodnoty[3]));
+        LetadloRychlostY.setText(Float.toString(hodnoty[4]));
+        LetadloRychlostZ.setText(Float.toString(hodnoty[5]));
     }
 
 }

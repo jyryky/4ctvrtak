@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -65,7 +66,6 @@
                    <Button fx:id="LetadloRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#LetadloRight" text="&gt;" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-             <Label alignment="CENTER" contentDisplay="CENTER" text="Letadlo" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <GridPane>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -87,6 +87,7 @@
                    <Label fx:id="LetadloRychlostZ" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
+            <ChoiceBox fx:id="LetadloChoiceBox" onMouseClicked="#updateChoiceBox" prefWidth="150.0" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

@@ -85,4 +85,9 @@ public class Auto extends AbsProstredek {
     public float vypisPalivo() {
         return this.soucasnePalivo;
     }
+
+    @Override
+    public String getNazevProstredku() {
+        return this.jmenoProstredku;
+    }
 }

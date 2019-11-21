@@ -95,5 +95,10 @@ public class Letadlo extends AbsProstredek {
         return this.soucasnePalivo;
     }
 
+    @Override
+    public String getNazevProstredku() {
+        return this.jmenoProstredku;
+    }
+
 
 }

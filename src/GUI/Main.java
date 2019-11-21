@@ -1,6 +1,7 @@
 package GUI;
 
-import doprava.*;
+import doprava.Vyrobna;
+import doprava.AbsProstredek;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.*;
 import java.util.Arrays;
+
 
 
 public class Main extends Application {
@@ -24,10 +26,11 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) { launch(args);
+        Vyrobna vyrobna = new Vyrobna();
         String fileName="Prostredky1.txt";
         ArrayList<AbsProstredek> em = new ArrayList<>();
         ArrayList<AbsProstredek> emNew = new ArrayList<>();
-        em.add(new Letadlo("airbus",5000,4,2000,200000));
+        em.add(new Letadlo("airbus",5000,4,2000,200000)); //P L S  F I X N I  T O  S L Í B I L  J S I  T O  J I R K O
         em.add(new Auto("Skoda octavia", 102, 5,0.2f,8));
         em.add(new Ponorka("Takovata co meli beetles", 500, 9,1,4));
         //serialize to file
@@ -51,6 +54,7 @@ public class Main extends Application {
         System.out.println("empNew Object::"+emNew.get(1));
 
     }
+
 
 }
 
