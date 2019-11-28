@@ -16,6 +16,9 @@ import java.util.Objects;
 
 public class Controller {
     private Vyrobna vyrobna = new Vyrobna();
+    private boolean notInicialised = true;
+
+
     @FXML
     public Label LetadloRychlostX;
     @FXML
@@ -42,6 +45,16 @@ public class Controller {
     public Label LetadloPoziceX;
     @FXML
     public ChoiceBox<String> LetadloChoiceBox;
+
+    public void startUp() {
+        if(notInicialised){
+            vyrobna.vytvorProstredek("Letadlo","Letadelko", 50000.0f, 30, 2);
+            vyrobna.vytvorProstredek("Letadlo","Letadelko22222", 50000.0f, 30, 2);
+            vyrobna.vytvorProstredek("Ponorka", "Ponorecka", 50000.0f, 30, 2);
+            vyrobna.vytvorProstredek("Auto", "Auticko", 50000.0f, 30, 2);
+            notInicialised=false;
+        }
+    }
 
     public void updateChoiceBox(){
         LetadloChoiceBox.getItems().clear();

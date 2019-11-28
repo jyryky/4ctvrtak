@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Vyrobna {
+
     private ArrayList<AbsProstredek> prostredky = new ArrayList<>();
+
 
     public void vytvorProstredek(String typ, String jmenoProstredku, float maxPalivo, int maxMist, int pocetPohonu ) {
         if (jeJmenoVolne(jmenoProstredku)) {
@@ -13,7 +15,7 @@ public class Vyrobna {
             } else if (Objects.equals(typ, "Letadlo")) {
                 prostredky.add(new Letadlo(jmenoProstredku, maxPalivo, maxMist, pocetPohonu));
             } else {
-            prostredky.add(new Ponorka(jmenoProstredku, maxPalivo, maxMist, pocetPohonu));
+                prostredky.add(new Ponorka(jmenoProstredku, maxPalivo, maxMist, pocetPohonu));
             }
         }
     }
@@ -30,13 +32,16 @@ public class Vyrobna {
     }
 
     private boolean jeJmenoVolne(String jmenoProstredku){
-        for (AbsProstredek prostredek:prostredky
-             ) {
-            if (Objects.equals(prostredek.jmenoProstredku, jmenoProstredku)){
-                return false;
+        if(prostredky!=null){
+            for (AbsProstredek prostredek:prostredky
+                ) {
+                if (Objects.equals(prostredek.jmenoProstredku, jmenoProstredku)){
+                    return false;
+                }
             }
         }
         return true;
+
     }
     public ArrayList<AbsProstredek> getProstredky() {
         return prostredky;

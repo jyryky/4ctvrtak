@@ -18,7 +18,6 @@ import java.util.Arrays;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        Vyrobna vyrobna=new Vyrobna();
         /**
         String fileName="Prostredky1.txt";
         ArrayList<AbsProstredek> em = new ArrayList<>();  //ber arraylist z vyrobny
@@ -56,7 +55,4 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 400, 400));
         primaryStage.show();
     }
-
 }
-
-
