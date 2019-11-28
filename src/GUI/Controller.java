@@ -8,16 +8,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
+
 
 
 public class Controller {
     private Vyrobna vyrobna = new Vyrobna();
     private boolean notInicialised = true;
 
+    private Vyrobna prostredky;
 
     @FXML
     public Label LetadloRychlostX;
@@ -53,6 +57,34 @@ public class Controller {
             vyrobna.vytvorProstredek("Ponorka", "Ponorecka", 50000.0f, 30, 2);
             vyrobna.vytvorProstredek("Auto", "Auticko", 50000.0f, 30, 2);
             notInicialised=false;
+
+             String fileName="Prostredky1.txt";
+             ArrayList<AbsProstredek> em =prostredky.getProstredky();  //ber arraylist z vyrobny
+             ArrayList<AbsProstredek> emNew = new ArrayList<>();
+
+            /* em.add(new Letadlo("airbus",5000,4,2000,200000)); //foreachuj arraylist z vyrobny, používej metody z vyrobny
+             em.add(new Auto("Skoda octavia", 102, 5,0.2f,8)); //vyrobna.vytvorProstredek(String typ, String jmenoProstredku, float maxPalivo, int maxMist, int pocetPohonu);
+             em.add(new Ponorka("Takovata co meli beetles", 500, 9,1,4));*/
+             //serialize to file
+             try {
+             SerializationUtil.serialize(em, fileName);
+             } catch (IOException e) {
+             e.printStackTrace();
+             return;
+             }
+
+             //deserialize from file
+             try {
+             emNew = SerializationUtil.deserialize(fileName);
+             } catch (ClassNotFoundException | IOException e) {
+             e.printStackTrace();
+             }
+
+             System.out.println("emp Object::"+em.get(0));
+             System.out.println("emp Object::"+em.get(1));
+             System.out.println("empNew Object::"+emNew.get(0));
+             System.out.println("empNew Object::"+emNew.get(1));
+
         }
     }
 
